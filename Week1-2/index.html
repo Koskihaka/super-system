@@ -7,20 +7,16 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-          <ul>
-            <li class="dropdown">
-              <a href="#esittely" class="main-link">Esittely</a>
-              <ul class="dropdown-content">
-                <li><a href="#osaaminen">Osaaminen</a></li>
-                <li><a href="#unelmat">Unelmat</a></li>
-                <li><a href="#contact">Yhteydenotto</a></li> 
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </header>      
+  <header>
+    <nav>
+        <ul>
+            <li><a href="#osaaminen">Osaaminen</a></li>
+            <li><a href="#unelmat">Unelmat</a></li>
+            <li><a href="#contact">Yhteydenotto</a></li>
+            <li><a href="#tarot">Inspiraatiota Tarotista</a></li>
+        </ul>
+    </nav>
+  </header>  
   <section id="esittely">
     <h1>Tervetuloa Oppimispolulleni</h1>
     <p>Olen kolmannen vuoden tieto- ja viestintätekniikan insinööriopiskelija, joka haluaa päästä yhdistämään sosiaali- ja terveysalan osaamisensa ja IT-taidot.</p>
@@ -47,22 +43,24 @@
     <p>Unelmani on kehittää ratkaisuja, jotka helpottavat sote-ammattilaisten arkea ja tekevät palveluista entistä saavutettavampia.</p>
   </section>
   <section id="contact">
-    <h2>Ota yhteyttä</h2>
-    <form id="contactForm">
-      <label for="name">Nimi:</label>
-      <input type="text" id="name" name="name" placeholder="Anna nimesi">
-      <small class="error" id="nameError"></small>
-  
-      <label for="email">Sähköposti:</label>
-      <input type="email" id="email" name="email" placeholder="Anna sähköpostisi">
-      <small class="error" id="emailError"></small>
-  
-      <label for="message">Viesti:</label>
-      <textarea id="message" name="message" placeholder="Kirjoita viestisi"></textarea>
-      <small class="error" id="messageError"></small>
-  
-      <button type="submit">Lähetä</button>
-    </form>
+    <div class="contact-card">
+      <h2>Ota yhteyttä</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Nimi</label>
+          <input type="text" id="name" name="name" placeholder="Anna nimesi">
+        </div>
+        <div class="form-group">
+          <label for="email">Sähköposti</label>
+          <input type="email" id="email" name="email" placeholder="Anna sähköpostisi">
+        </div>
+        <div class="form-group full-width">
+          <label for="message">Viesti</label>
+          <textarea id="message" name="message" placeholder="Kirjoita viestisi"></textarea>
+        </div>
+        <button type="submit">Lähetä</button>
+      </form>
+    </div>
     <div class="container">
       <div class="card">
         <h3>LinkedIn</h3>
