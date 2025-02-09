@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oppimispolku</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+        <ul>
+            <li><a href="#osaaminen">Osaaminen</a></li>
+            <li><a href="#unelmat">Unelmat</a></li>
+            <li><a href="#contact">Yhteydenotto</a></li>
+            <li><a href="#tarot">Inspiraatiota Tarotista</a></li>
+        </ul>
+    </nav>
+  </header>  
+  <section id="esittely">
+    <h1>Tervetuloa Oppimispolulleni</h1>
+    <p>Olen kolmannen vuoden tieto- ja viestintätekniikan insinööriopiskelija, joka haluaa päästä yhdistämään sosiaali- ja terveysalan osaamisensa ja IT-taidot.</p>
+  </section>
+  <section id="osaaminen">
+    <h2>Osaaminen</h2>
+    <p>Koulussa opiskelemiani aiheita:</p>
+    <ul>
+        <li>Linuxin perusteet ja komentorivin käyttö</li>
+        <li>IP-verkot ja verkkoteknologiat</li>
+        <li>Tietokannat ja SQL-kyselyt</li>
+        <li>Ohjelmistokehitys – Perusteet ohjelmistojen suunnittelusta, testauksesta ja toteutuksesta.</li>
+        <li>Ohjelmointi – Python, JavaScript ja C#</li>
+        <li>Kyberturvallisuus – perusteet ja käytännöt</li>
+        <li>Web-kehittäminen – responsiiviset sivustot HTML:llä, CSS:llä ja JavaScriptillä</li>
+        <li>IoT – IoT-järjestelmien perusteet ja niiden käyttö</li>
+        <li>CCNA – Cisco-verkkojen perusteet</li>
+        <li>AWS – Pilvipalveluiden perusteet Amazon Web Services -ympäristössä</li>
+        <li>ICT-yrittäjyys</li>
+      </ul>
+  </section>
+  <section id="unelmat">
+    <h2>Unelmat</h2>
+    <p>Unelmani on kehittää ratkaisuja, jotka helpottavat sote-ammattilaisten arkea ja tekevät palveluista entistä saavutettavampia.</p>
+  </section>
+  <section id="contact">
+    <div class="contact-card">
+      <h2>Ota yhteyttä</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Nimi</label>
+          <input type="text" id="name" name="name" placeholder="Anna nimesi">
+        </div>
+        <div class="form-group">
+          <label for="email">Sähköposti</label>
+          <input type="email" id="email" name="email" placeholder="Anna sähköpostisi">
+        </div>
+        <div class="form-group full-width">
+          <label for="message">Viesti</label>
+          <textarea id="message" name="message" placeholder="Kirjoita viestisi"></textarea>
+        </div>
+        <button type="submit">Lähetä</button>
+      </form>
+    </div>
+    <div class="container">
+      <div class="card">
+        <h3>LinkedIn</h3>
+        <p>
+          <a href="https://www.linkedin.com/in/hanna-koskinen" target="_blank">
+            www.linkedin.com/in/hanna-koskinen
+          </a>
+        </p>
+      </div>
+      <div class="card">
+        <h3>Sähköposti</h3>
+        <p>
+          <a href="mailto:hanna.koskinen@centria.fi">
+            hanna.koskinen@centria.fi
+          </a>
+        </p>
+      </div>
+      <div class="card">
+        <h3>GitHub</h3>
+        <p>
+          <a href="https://github.com/Koskihaka" target="_blank">
+            github.com/Koskihaka
+          </a>
+        </p>
+      </div>
+    </div>
+  </section> 
+  <section id="tarot">
+    <h2>Inspiraatiota Tarot korteista</h2>
+    <p>Tarot yhdistää symboliikan ja tarinankerronnan, ja se on kiehtova tapa syventää itsetuntemusta ja luovuutta. Tarot kortit voivat tuoda uusia ajatuksia – siksi halusinkin arpoa sinulle oman kortin tähän päivään:</p>
+    <div id="tarotContainer"></div>
+  </section> 
+  <footer>
+    <p>Luotu rakkaudella ja uteliaisuudella yhdessä ChatGPT:n kanssa</p>
+  </footer>
+  <script src="scripts.js"></script>
+</body>
+</html>
