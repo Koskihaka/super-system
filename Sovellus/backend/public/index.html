@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirjaston hallinta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .book-list {
+            margin-top: 20px;
+        }
+
+        .book-item {
+            background: #f8f9fa;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .actions button {
+            margin-left: 5px;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+        }
+
+        .delete-btn:hover {
+            background: #c82333;
+        }
+
+        .borrow-btn {
+            background: #28a745;
+        }
+
+        .borrow-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Kirjaston hallinta</h2>
+
+        <input type="text" id="title" placeholder="Kirjan nimi">
+        <input type="text" id="author" placeholder="Kirjailija">
+        <input type="number" id="year_published" placeholder="Julkaisuvuosi">
+        <button onclick="addBook()">Lisää kirja</button>
+
+        <div class="book-list" id="bookList"></div>
+    </div>
+
+    <script>
+        // Hae kirjat ja päivitä lista
+        async function fetchBooks() {
+            const response = await fetch('/books');
+            const books = await response.json();
+            const bookList = document.getElementById('bookList');
+            bookList.innerHTML = '';
+
+            books.forEach(book => {
+                const bookDiv = document.createElement('div');
+                bookDiv.classList.add('book-item');
+
+                // Määritellään kirjan saatavuus (1 = lainattavissa, 0 = lainassa)
+                const statusText = book.available ? "Lainattavissa" : "Lainassa";
+                const statusColor = book.available ? "green" : "red";
+                const buttonText = book.available ? "Lainaa" : "Palauta";
+
+                bookDiv.innerHTML = `
+                    <span>${book.title} - ${book.author} (${book.year_published}) 
+                        <strong style="color: ${statusColor};">[${statusText}]</strong>
+                    </span>
+                    <div class="actions">
+                        <button class="borrow-btn" onclick="updateAvailability(${book.book_id}, ${book.available ? 0 : 1})">
+                            ${buttonText}
+                        </button>
+                        <button class="delete-btn" onclick="deleteBook(${book.book_id})">Poista</button>
+                    </div>
+                `;
+
+                bookList.appendChild(bookDiv);
+            });
+        }
+
+        // Lisää uusi kirja
+        async function addBook() {
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const year_published = document.getElementById('year_published').value;
+
+            if (!title || !author || !year_published) {
+                alert('Täytä kaikki kentät!');
+                return;
+            }
+
+            await fetch('/books', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, author, year_published })
+            });
+
+            document.getElementById('title').value = '';
+            document.getElementById('author').value = '';
+            document.getElementById('year_published').value = '';
+            fetchBooks();
+        }
+
+        // Päivitä kirjan saatavuus (Lainaa/Palauta)
+        async function updateAvailability(book_id, newStatus) {
+            await fetch(`/books/${book_id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ available: newStatus })
+            });
+            fetchBooks();
+        }
+
+        // Poista kirja
+        async function deleteBook(book_id) {
+            await fetch(`/books/${book_id}`, { method: 'DELETE' });
+            fetchBooks();
+        }
+
+        // Lataa kirjat, kun sivu avataan
+        fetchBooks();
+    </script>
+</body>
+
+</html>
