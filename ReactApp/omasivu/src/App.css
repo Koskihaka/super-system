@@ -1,0 +1,256 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #fef6e4, #f4e3d7);
+  color: #333;
+}
+/* Navigointi */
+header {
+  background: #c27a5e;
+  color: white;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto; /* Lisää scrollauksen vaakasuunnassa pienille näytöille */
+  white-space: nowrap; /* Estää rivittymisen */
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffd166;
+  transform: scale(1.1);
+}
+
+nav ul li a.active {
+  text-decoration: underline;
+  color: yellow;
+}
+
+/* Responsiivisuus */
+@media (max-width: 768px) {
+  nav ul {
+    justify-content: flex-start; /* Scrollauksen aloitus vasemmalta */
+    padding: 0 1rem; /* Lisää marginaalit */
+  }
+
+  nav ul li {
+    margin: 0 10px;
+  }
+}
+
+/* Sisältöosio */
+section {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #fff4e6;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background: #5e3d2e; /* Tumma, maanläheinen ruskea footerille */
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+#osaaminen ul {
+  list-style-type: disc; /* Perinteinen lista */
+  padding-left: 0;
+  margin-top: 20px;
+  max-width: 700px; /* Rajoitetaan listan leveys */
+  margin-left: auto; /* Keskitetään sisältö */
+  margin-right: auto; /* Keskitetään sisältö */
+}
+
+#osaaminen li {
+  font-size: 1.1rem; /* Suurempi fonttikoko */
+  color: #333; /* Tumma teksti */
+  margin-bottom: 10px;
+  padding: 10px 15px; /* Lisää sisätilaa */
+  background-color: #fff4e6; /* Vaalea beige tausta */
+  border-radius: 5px; /* Pyöristetyt kulmat */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Kevyt varjo */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left; /* Kohdistaa tekstin vasemmalle */
+}
+
+#osaaminen li:hover {
+  transform: translateY(-3px); /* Nostaa hieman hoverilla */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Syvempi varjo hoverilla */
+}
+/* Yhteystiedot-osio */
+#yhteystiedot {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #fff4e6; /* Vaalea beige tausta */
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px; /* Pyöristetyt kulmat */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Pehmeä varjo */
+}
+
+/* Grid-container kortteja varten */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Skaalautuva asettelu */
+  gap: 15px; /* Korttien väli */
+  padding: 10px; /* Reunaväli */
+}
+
+/* Korttien tyylit */
+.card {
+  background-color: #fef6e4; /* Korttien taustaväri */
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Kevyt varjo */
+  font-weight: bold;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover-animaatio */
+}
+
+.card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card a {
+  color: #c27a5e; /* Linkkien väri */
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* Lomakkeen tyylit */
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Kahden sarakkeen asettelu */
+  gap: 15px 20px;
+  max-width: 600px;
+  margin: 0 auto; /* Keskitetään lomake */
+  align-items: center;
+}
+
+form label {
+  text-align: right; /* Labelit oikealle */
+  margin-bottom: 5px;
+}
+
+form input, form textarea {
+  width: 100%; /* Kentät täyttävät tilan */
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Padding ei vaikuta kenttien leveydelle */
+}
+
+form textarea {
+  resize: vertical;
+  height: 150px; /* Aseta oletuskorkeus */
+}
+
+form button {
+  grid-column: span 2; /* Painike täyttää koko rivin */
+  background-color: #c27a5e;
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #a65a4b;
+}
+
+/* Responsiivisuus */
+@media (max-width: 768px) {
+  form {
+    grid-template-columns: 1fr; /* Yhden sarakkeen asettelu */
+  }
+
+  form label {
+    text-align: right; /* Kohdista label vasemmalle */
+  }
+
+  form button {
+    grid-column: 1; /* Painike täyttää koko rivin */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: 1fr; /* Kortit yhteen sarakkeeseen */
+  }
+}
+
+#tarotContainer {
+  background-color: #2d1e40; /* Tumma violetti tausta */
+  color: #e0e0e0; /* Vaalea teksti */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Syvempi varjo */
+  text-align: center;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+#tarotContainer h2 {
+  color: #c9a74b; /* Kullansävy otsikkoon */
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+#tarotContainer p {
+  color: #d4c9a1; /* Hiekanvärinen teksti */
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+#tarotContainer h3 {
+  color: #8e5c3d; /* Punaruskea kortin nimi */
+  margin-bottom: 10px;
+}
+
+#tarotContainer p strong {
+  color: #c9a74b; /* Korostukset kultaisella */
+}
+
+#tarotContainer p:last-child {
+  margin-bottom: 0;
+}
