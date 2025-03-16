@@ -1,0 +1,29 @@
+/* Keskittää otsikon */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  /* Tasaa saatavuuslaatikot */
+  .status-label {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 5px;
+    color: white;
+    text-transform: uppercase;
+    min-width: 90px;  /* ✅ Kaikki laatikot samankokoisiksi */
+    text-align: center;
+    display: inline-block;
+  }
+  
+  /* Kirjalista näyttää siistiltä */
+  .book-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  

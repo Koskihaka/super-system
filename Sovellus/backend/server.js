@@ -29,6 +29,9 @@ db.run(`CREATE TABLE IF NOT EXISTS books (
   available BOOLEAN DEFAULT 1
 )`);
 
+const cors = require("cors"); // Lisää cors
+app.use(cors()); // Ota cors käyttöön
+
 //  Palauta etusivuksi `index.html`
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -61,18 +64,24 @@ app.post('/books', (req, res) => {
 });
 
 // Päivitä kirjan saatavuus (lainaus tai palautus)
+// Päivitä kirjan tiedot (nimi, kirjailija, vuosi, saatavuus)
 app.put('/books/:book_id', (req, res) => {
   const { book_id } = req.params;
-  const { available } = req.body;
+  const { title, author, year_published, available } = req.body;
 
-  db.run(`UPDATE books SET available = ? WHERE book_id = ?`, [available, book_id], function (err) {
+  if (!title || !author || !year_published) {
+    return res.status(400).json({ error: 'Nimi, kirjailija ja julkaisuvuosi vaaditaan' });
+  }
+
+  const query = `UPDATE books SET title = ?, author = ?, year_published = ?, available = ? WHERE book_id = ?`;
+  db.run(query, [title, author, year_published, available, book_id], function (err) {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
     if (this.changes === 0) {
       return res.status(404).json({ error: 'Kirjaa ei löytynyt' });
     }
-    res.json({ message: 'Kirjan saatavuus päivitetty', book_id, available });
+    res.json({ message: 'Kirjan tiedot päivitetty', book_id });
   });
 });
 
